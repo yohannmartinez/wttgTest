@@ -6,9 +6,9 @@ class widget extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            columns: 4,
+            columns: 3,
             rows: 2,
-            navigation_left:0,
+            navigation_left: 0,
             blocs: [
                 { text: "bloc1" },
                 { text: "bloc2" },
@@ -52,14 +52,15 @@ class widget extends React.Component {
     }
 
     async componentDidMount() {
-        console.log(document.getElementsByClassName('navigation_container')[0].style.width)
+        let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))) * 100));
+        document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`
     }
 
     navigate(navigation_number) {
-        this.setState({navigation_left : this.state.navigation_left + navigation_number},()=>{
+        this.setState({ navigation_left: this.state.navigation_left + navigation_number }, () => {
             document.getElementsByClassName('navigation_container')[0].style.transform = `translateX(${this.state.navigation_left}00vw)`
             console.log(Math.abs(this.state.navigation_left))
-            let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / ( this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / ( this.state.columns * this.state.rows))) * 100));
+            let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))) * 100));
             document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`
         })
     }
@@ -70,18 +71,22 @@ class widget extends React.Component {
             <div>
                 <div className="navbar">
                     <span>LOGO</span>
-                    <button onClick={()=>{this.navigate(1)}}>Previous</button>
-                    <button onClick={()=>{this.navigate(-1)}}>Next</button>
+                    {Math.abs(this.state.navigation_left) > 0 &&
+                    <button onClick={() => { this.navigate(1) }}>Previous</button>
+                }
+                    {Math.abs(this.state.navigation_left) < (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)) - 1) &&
+                    <button onClick={() => { this.navigate(-1) }}>Next</button>
+                    }
                 </div>
                 <div className="blocs_container">
-                    <div className="navigation_container" style={{"width" : `${Math.ceil(this.state.blocs.length / ( this.state.columns * this.state.rows))}00vw`}}>
-                        {this.state.blocs.map((bloc,index) => (
-                            <div className="bloc" style={{"order": (index + 1),"width" : `calc(100vw / ${this.state.columns})`,"height" : `calc(100% / ${this.state.rows})`}}>{bloc.text}</div>
+                    <div className="navigation_container" style={{ "width": `${Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))}00vw` }}>
+                        {this.state.blocs.map((bloc, index) => (
+                            <div className="bloc" style={{ "order": (index + 1), "width": `calc(100vw / ${this.state.columns})`, "height": `calc(100% / ${this.state.rows})` }}>{bloc.text}</div>
                         ))}
                     </div>
                 </div>
                 <div className="progress_bar_container">
-                    <div className="progress_bar" style={{"width" : `Math.abs(-100 - ((Math.abs(${this.state.navigation_left} - 1) - (Math.ceil(${this.state.blocs.length} / ( ${this.state.columns} * ${this.state.rows})))) / (Math.ceil(${this.state.blocs.length} / ( ${this.state.columns} * ${this.state.rows}))) * 100));`}}></div>
+                    <div className="progress_bar"></div>
                 </div>
                 <div className="footer">
                     <span>LOGO2</span>
