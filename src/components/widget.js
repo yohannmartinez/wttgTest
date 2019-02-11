@@ -71,12 +71,8 @@ class widget extends React.Component {
             <div>
                 <div className="navbar">
                     <span>LOGO</span>
-                    {Math.abs(this.state.navigation_left) > 0 &&
-                    <button onClick={() => { this.navigate(1) }}>Previous</button>
-                }
-                    {Math.abs(this.state.navigation_left) < (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)) - 1) &&
-                    <button onClick={() => { this.navigate(-1) }}>Next</button>
-                    }
+                    <button disabled={Math.abs(this.state.navigation_left) <= 0} onClick={() => { this.navigate(1) }}>Previous</button>
+                    <button disabled={Math.abs(this.state.navigation_left) > (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)) - 2)} onClick={() => { this.navigate(-1) }}>Next</button>
                 </div>
                 <div className="blocs_container">
                     <div className="navigation_container" style={{ "width": `${Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))}00vw` }}>

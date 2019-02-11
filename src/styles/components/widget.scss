@@ -18,7 +18,7 @@
 
 .navigation_container{
     height:100%;
-    border:1px solid blue;
+    background-color:rgb(27,28,32);
     display:flex;
     transition:1000ms;
     flex-wrap: wrap;
@@ -27,7 +27,7 @@
 }
 
 .bloc{
-    background-color:rgba(0,0,0,0.5);
+    background-color:yellow;
     flex-shrink: 0;
 }
 
@@ -36,16 +36,17 @@
     width:100vw;
     position:absolute;
     bottom:60rem;
-    opacity:0.5;
+    opacity:0.9;
     left:0;
     z-index:1;
-    background-color:rgb(27,28,32)
+    background-color:rgba(27,28,32,0.3)
 }
 
 .progress_bar{
     width:0;
-    background-color:#00C29A;
+    background-color:rgb(1, 224, 180);
     height:5rem;
+    transition:1000ms;
 }
 
 .footer{
