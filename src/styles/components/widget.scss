@@ -16,17 +16,19 @@
 }
 
 .navigation_container{
-    width:200%;
     height:100%;
     border:1px solid white;
+    display:flex;
+    transition:1000ms;
+}
+
+.bloc{
+    background-color:rgba(0,0,0,0.5);
+    flex-shrink: 0;
 }
 
 .footer{
     font-size:14rem;
     background-color:#3366cc;
     height:60rem;
-}
-
-.bloc{
-    background-color:rgba(0,0,0,0.5)
 }
