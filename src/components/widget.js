@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import wttjLogo from '../images/wttjLogo.svg'
 
 
 class widget extends React.Component {
@@ -71,8 +72,10 @@ class widget extends React.Component {
             <div>
                 <div className="navbar">
                     <span>LOGO</span>
-                    <button disabled={Math.abs(this.state.navigation_left) <= 0} onClick={() => { this.navigate(1) }}>Previous</button>
-                    <button disabled={Math.abs(this.state.navigation_left) > (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)) - 2)} onClick={() => { this.navigate(-1) }}>Next</button>
+                    <div className="navigation_buttons_container_right">
+                        <button className="navigation_button" disabled={Math.abs(this.state.navigation_left) <= 0} onClick={() => { this.navigate(1) }}><i class="fas fa-chevron-left"></i></button>
+                        <button className="navigation_button" disabled={Math.abs(this.state.navigation_left) > (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)) - 2)} onClick={() => { this.navigate(-1) }}><i class="fas fa-chevron-right"></i></button>
+                    </div>
                 </div>
                 <div className="blocs_container">
                     <div className="navigation_container" style={{ "width": `${Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))}00vw` }}>
@@ -85,8 +88,8 @@ class widget extends React.Component {
                     <div className="progress_bar"></div>
                 </div>
                 <div className="footer">
-                    <span>LOGO2</span>
-                    <button>voir le profil</button>
+                    <img src={wttjLogo} className="wttj_logo_footer" />
+                    <button className="see_profile_button">VOIR LE PROFIL <i class="fas fa-angle-right"></i></button>
                 </div>
             </div>
         )

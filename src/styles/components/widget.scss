@@ -1,9 +1,10 @@
 :root{
     font-size: 1px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .navbar{
-    background-color:red;
+    background-color:rgb(27,28,32);
     height:60rem;
     font-size: 14rem;
 }
@@ -18,12 +19,41 @@
 
 .navigation_container{
     height:100%;
-    background-color:rgb(27,28,32);
+    background-color:rgb(53, 53, 53);
     display:flex;
     transition:1000ms;
     flex-wrap: wrap;
     flex-direction: column;
     align-content: flex-start;
+}
+
+.navigation_buttons_container_right{
+    height:100%;
+    float:right;
+    margin-right:20rem;
+}
+
+.navigation_button{
+    border-radius:50%;
+    background-color:rgb(53, 53, 54);
+    color:white;
+    border:none;
+    cursor:pointer;
+    height:40rem;
+    width:40rem;
+    font-size:15rem;
+    font-weight: 600;
+    margin:10rem 0 0 15rem;
+    transition: 500ms;
+    position: relative;
+}
+
+.navigation_button:focus{
+    outline-width: 0;
+}
+
+.navigation_button:hover{
+    background-color:rgb(71, 72, 75);
 }
 
 .bloc{
@@ -46,11 +76,33 @@
     width:0;
     background-color:rgb(1, 224, 180);
     height:5rem;
-    transition:1000ms;
+    transition:all 0.5s cubic-bezier(.2,.67,.77,.99) 0s;
 }
 
 .footer{
     font-size:14rem;
-    background-color:#3366cc;
+    background-color:rgb(27,28,32);
     height:60rem;
+}
+
+.wttj_logo_footer{
+    height:40rem;
+    margin:10rem 0 0 10rem;
+}
+
+.see_profile_button{
+    background-color:transparent;
+    border:none;
+    float:right;
+    height:60rem;
+    margin-right:15rem;
+    color:white;
+    font-family: 'Roboto',sans-serif;
+    font-size:12rem;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.see_profile_button:hover{
+    color:rgb(1, 224, 180);
 }
