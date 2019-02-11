@@ -13,6 +13,7 @@
     height:calc(100vh - 120rem);
     font-size:14rem;
     overflow:hidden;
+    z-index:-1;
 }
 
 .navigation_container{
@@ -28,6 +29,23 @@
 .bloc{
     background-color:rgba(0,0,0,0.5);
     flex-shrink: 0;
+}
+
+.progress_bar_container{
+    height:5rem;
+    width:100vw;
+    position:absolute;
+    bottom:60rem;
+    opacity:0.5;
+    left:0;
+    z-index:1;
+    background-color:rgb(27,28,32)
+}
+
+.progress_bar{
+    width:0;
+    background-color:#00C29A;
+    height:5rem;
 }
 
 .footer{

@@ -6,7 +6,7 @@ class widget extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            columns: 3,
+            columns: 4,
             rows: 2,
             navigation_left:0,
             blocs: [
@@ -58,6 +58,9 @@ class widget extends React.Component {
     navigate(navigation_number) {
         this.setState({navigation_left : this.state.navigation_left + navigation_number},()=>{
             document.getElementsByClassName('navigation_container')[0].style.transform = `translateX(${this.state.navigation_left}00vw)`
+            console.log(Math.abs(this.state.navigation_left))
+            let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / ( this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / ( this.state.columns * this.state.rows))) * 100));
+            document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`
         })
     }
 
@@ -77,10 +80,13 @@ class widget extends React.Component {
                         ))}
                     </div>
                 </div>
-                {/* <div className="footer">
+                <div className="progress_bar_container">
+                    <div className="progress_bar" style={{"width" : `Math.abs(-100 - ((Math.abs(${this.state.navigation_left} - 1) - (Math.ceil(${this.state.blocs.length} / ( ${this.state.columns} * ${this.state.rows})))) / (Math.ceil(${this.state.blocs.length} / ( ${this.state.columns} * ${this.state.rows}))) * 100));`}}></div>
+                </div>
+                <div className="footer">
                     <span>LOGO2</span>
                     <button>voir le profil</button>
-                </div> */}
+                </div>
             </div>
         )
     }
