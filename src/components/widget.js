@@ -37,6 +37,16 @@ class widget extends React.Component {
                 { text: "bloc25" },
                 { text: "bloc26" },
                 { text: "bloc27" },
+                { text: "bloc28" },
+                { text: "bloc29" },
+                { text: "bloc30" },
+                { text: "bloc31" },
+                { text: "bloc32" },
+                { text: "bloc33" },
+                { text: "bloc33" },
+                { text: "bloc33" },
+                { text: "bloc33" },
+                { text: "bloc33" },
             ],
         }
     }
@@ -62,15 +72,15 @@ class widget extends React.Component {
                 </div>
                 <div className="blocs_container">
                     <div className="navigation_container" style={{"width" : `${Math.ceil(this.state.blocs.length / ( this.state.columns * this.state.rows))}00vw`}}>
-                        {this.state.blocs.map((bloc) => (
-                            <div className="bloc" style={{"width" : `calc(100vw / ${this.state.columns})`,"height" : `calc(100% / ${this.state.rows})`}}>{bloc.text}</div>
+                        {this.state.blocs.map((bloc,index) => (
+                            <div className="bloc" style={{"order": (index + 1),"width" : `calc(100vw / ${this.state.columns})`,"height" : `calc(100% / ${this.state.rows})`}}>{bloc.text}</div>
                         ))}
                     </div>
                 </div>
-                <div className="footer">
+                {/* <div className="footer">
                     <span>LOGO2</span>
                     <button>voir le profil</button>
-                </div>
+                </div> */}
             </div>
         )
     }
