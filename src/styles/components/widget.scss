@@ -1,0 +1,32 @@
+:root{
+    font-size: 1px;
+}
+
+.navbar{
+    background-color:red;
+    height:60rem;
+    font-size: 14rem;
+}
+
+.blocs_container{
+    background-color:yellow;
+    height:calc(100vh - 120rem);
+    font-size:14rem;
+    overflow:hidden;
+}
+
+.navigation_container{
+    width:200%;
+    height:100%;
+    border:1px solid white;
+}
+
+.footer{
+    font-size:14rem;
+    background-color:#3366cc;
+    height:60rem;
+}
+
+.bloc{
+    background-color:rgba(0,0,0,0.5)
+}
