@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import wttjLogo from '../images/wttjLogo.svg'
 import logoEntreprise from '../images/logo_entreprise.png'
+import SwipeListener from 'swipe-listener';
 
 
 class widget extends React.Component {
@@ -39,33 +40,48 @@ class widget extends React.Component {
                 { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png", title: "Venez rencontrer Marie" },
             ],
         }
+        this.onSwipe = this.onSwipe.bind(this);
     }
 
     async componentDidMount() {
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has("columns")) {
-            this.setState({ columns: urlParams.get("columns") },()=> {this.setProgressBar()})
+        if (urlParams.has("columns") && window.innerWidth > 800) {
+            this.setState({ columns: urlParams.get("columns") }, () => { this.setProgressBar() })
+        } else if (window.innerWidth > 800 && !urlParams.has("columns")) {
+            this.setState({ columns: 3 }, () => { this.setProgressBar() })
         } else {
-            this.setState({ columns: 3 },()=> {this.setProgressBar()})
+            this.setState({ columns: 1 })
         }
 
         if (urlParams.has("rows")) {
-            this.setState({ rows: urlParams.get("rows") },()=> {this.setProgressBar()})
+            this.setState({ rows: urlParams.get("rows") }, () => { this.setProgressBar() })
         } else {
-            this.setState({ rows: 2 },()=> {this.setProgressBar()})
+            this.setState({ rows: 2 }, () => { this.setProgressBar() })
         }
 
         window.addEventListener("resize", this.onResize.bind(this))
+
+        var container = document.querySelector('#navigation_container');
+        var listener = SwipeListener(container);
+        container.addEventListener('swipe', this.onSwipe.bind(this));
     }
 
     onResize() {
         const urlParams = new URLSearchParams(window.location.search);
-        if(window.innerWidth < 800) {
-            this.setState({columns : 1})
+        if (window.innerWidth < 800) {
+            this.setState({ columns: 1 })
         } else if (window.innerWidth > 800 && urlParams.has("columns")) {
-            this.setState({ columns: urlParams.get("columns")})
+            this.setState({ columns: urlParams.get("columns") })
         } else {
-            this.setState({columns : 3})
+            this.setState({ columns: 3 })
+        }
+    }
+
+    onSwipe(swipe) {
+        if(swipe.detail.directions.left && Math.abs(this.state.navigation_left) !== (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)) - 1)){
+            this.navigate(-1);
+        } else if (swipe.detail.directions.right && this.state.navigation_left !== 0) {
+            this.navigate(1).bind(this)
         }
     }
 
@@ -77,7 +93,6 @@ class widget extends React.Component {
     navigate(navigation_number) {
         this.setState({ navigation_left: this.state.navigation_left + navigation_number }, () => {
             document.getElementsByClassName('navigation_container')[0].style.transform = `translateX(${this.state.navigation_left}00vw)`
-            console.log(Math.abs(this.state.navigation_left))
             let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))) * 100));
             document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`
         })
@@ -97,7 +112,7 @@ class widget extends React.Component {
                 </div>
 
                 <div className="blocs_container">
-                    <div className="navigation_container" style={{ "width": `${Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))}00vw` }}>
+                    <div className="navigation_container" id="navigation_container" style={{ "width": `${Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))}00vw` }}>
                         {this.state.blocs.map((bloc, index) => (
                             <div className="bloc" style={{ "order": (index + 1), "width": `calc(100vw / ${this.state.columns})`, "height": `calc(100% / ${this.state.rows})` }}>
                                 {bloc.type === "image" &&
