@@ -17,7 +17,8 @@ class widget extends React.Component {
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7217/151601/small_wttj-jobs_2d663949-83f4-486c-be79-b7d199de4216.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7229/151601/small_wttj-jobs_5dd0c775-397f-4462-911b-6e43b37effe7.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7240/151601/small_wttj-jobs_a1aa5500-1287-47f8-8fda-efc32a627451.jpg" },
-                { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7252/151601/small_wttj-jobs_b3bbd3a7-0c09-403a-a446-9f29d0b09c3f.jpg" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg",title:"Venez rencontrer Jean" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png",title: "Venez rencontrer Marie" },
             ],
         }
     }
@@ -56,6 +57,15 @@ class widget extends React.Component {
                                 {bloc.type === "image" &&
                                     <div className="bloc_image" style={{ "backgroundImage": `url("${bloc.link}")` }}>
                                         <div className="bloc_image_search"><i class="fas fa-search"></i></div>
+                                    </div>
+                                }
+
+                                {bloc.type === "video" &&
+                                    <div className="bloc_video" style={{ "backgroundImage": `url("${bloc.link}")` }}>
+                                        <div className="bloc_video_bottom_container">
+                                            <div className="bloc_video_play">&nbsp;<i class="fas fa-play"></i></div>
+                                            <span className="bloc_video_title">{bloc.title}</span>
+                                        </div>
                                     </div>
                                 }
                             </div>
