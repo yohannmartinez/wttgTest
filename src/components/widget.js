@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import wttjLogo from '../images/wttjLogo.svg'
+import logoEntreprise from '../images/logo_entreprise.png'
 
 
 class widget extends React.Component {
@@ -11,43 +12,12 @@ class widget extends React.Component {
             rows: 2,
             navigation_left: 0,
             blocs: [
-                { text: "bloc1" },
-                { text: "bloc2" },
-                { text: "bloc3" },
-                { text: "bloc4" },
-                { text: "bloc5" },
-                { text: "bloc6" },
-                { text: "bloc7" },
-                { text: "bloc8" },
-                { text: "bloc9" },
-                { text: "bloc10" },
-                { text: "bloc11" },
-                { text: "bloc12" },
-                { text: "bloc13" },
-                { text: "bloc14" },
-                { text: "bloc15" },
-                { text: "bloc16" },
-                { text: "bloc17" },
-                { text: "bloc18" },
-                { text: "bloc19" },
-                { text: "bloc20" },
-                { text: "bloc21" },
-                { text: "bloc22" },
-                { text: "bloc23" },
-                { text: "bloc24" },
-                { text: "bloc25" },
-                { text: "bloc26" },
-                { text: "bloc27" },
-                { text: "bloc28" },
-                { text: "bloc29" },
-                { text: "bloc30" },
-                { text: "bloc31" },
-                { text: "bloc32" },
-                { text: "bloc33" },
-                { text: "bloc33" },
-                { text: "bloc33" },
-                { text: "bloc33" },
-                { text: "bloc33" },
+                { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7206/151601/small_wttj-offres-emploi_170aa579-aa26-4cf8-838c-9d68d4da6c32.jpg" },
+                { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7214/151601/small_wttj-annonces_d8d26d42-e764-4b3b-af34-2cdf25936ee1.jpg" },
+                { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7217/151601/small_wttj-jobs_2d663949-83f4-486c-be79-b7d199de4216.jpg" },
+                { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7229/151601/small_wttj-jobs_5dd0c775-397f-4462-911b-6e43b37effe7.jpg" },
+                { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7240/151601/small_wttj-jobs_a1aa5500-1287-47f8-8fda-efc32a627451.jpg" },
+                { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7252/151601/small_wttj-jobs_b3bbd3a7-0c09-403a-a446-9f29d0b09c3f.jpg" },
             ],
         }
     }
@@ -71,22 +41,32 @@ class widget extends React.Component {
         return (
             <div>
                 <div className="navbar">
-                    <span>LOGO</span>
+                    <img src={logoEntreprise} className="logo_header" />
+                    <span className="nom_entreprise_header">Yohann Martinez</span>
                     <div className="navigation_buttons_container_right">
                         <button className="navigation_button" disabled={Math.abs(this.state.navigation_left) <= 0} onClick={() => { this.navigate(1) }}><i class="fas fa-chevron-left"></i></button>
                         <button className="navigation_button" disabled={Math.abs(this.state.navigation_left) > (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)) - 2)} onClick={() => { this.navigate(-1) }}><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
+
                 <div className="blocs_container">
                     <div className="navigation_container" style={{ "width": `${Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))}00vw` }}>
                         {this.state.blocs.map((bloc, index) => (
-                            <div className="bloc" style={{ "order": (index + 1), "width": `calc(100vw / ${this.state.columns})`, "height": `calc(100% / ${this.state.rows})` }}>{bloc.text}</div>
+                            <div className="bloc" style={{ "order": (index + 1), "width": `calc(100vw / ${this.state.columns})`, "height": `calc(100% / ${this.state.rows})` }}>
+                                {bloc.type === "image" &&
+                                    <div className="bloc_image" style={{ "backgroundImage": `url("${bloc.link}")` }}>
+                                        <div className="bloc_image_search"><i class="fas fa-search"></i></div>
+                                    </div>
+                                }
+                            </div>
                         ))}
                     </div>
                 </div>
+
                 <div className="progress_bar_container">
                     <div className="progress_bar"></div>
                 </div>
+
                 <div className="footer">
                     <img src={wttjLogo} className="wttj_logo_footer" />
                     <button className="see_profile_button">VOIR LE PROFIL <i class="fas fa-angle-right"></i></button>

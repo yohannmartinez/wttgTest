@@ -1,12 +1,28 @@
 :root{
     font-size: 1px;
-    font-family: 'Roboto', sans-serif;
 }
+
+
 
 .navbar{
     background-color:rgb(27,28,32);
     height:60rem;
     font-size: 14rem;
+}
+
+.logo_header{
+    height:40rem;
+    width:40rem;
+    margin:10rem 0 0 10rem;
+    float:left;
+}
+
+.nom_entreprise_header{
+    color:white;
+    float:left;
+    line-height:60rem;
+    margin-left:15rem;
+    font-family:'Roboto',sans-serif;    
 }
 
 .blocs_container{
@@ -57,8 +73,61 @@
 }
 
 .bloc{
-    background-color:yellow;
+    background-color:rgb(27,28,32);
     flex-shrink: 0;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+.bloc_image{
+    background-size:cover;
+    background-repeat:no-repeat;
+    height:100%;
+    width:100%;
+    background-position:center center;
+    position:relative;
+    overflow:hidden;
+    transition:500ms;
+}
+
+.bloc_image_search{
+    color:white;
+    background-color:rgb(1, 224, 180);
+    border-radius:50%;
+    padding:20rem;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    z-index:2;
+    font-size:20rem;
+    opacity:0;
+    transition:500ms;
+}
+
+.bloc_image::after{
+    content:"";
+    position:absolute;
+    height:50%;
+    width:100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    z-index:1;
+    transform:translateY(100%);
+    bottom:0;
+    left:0;
+    transition:500ms;
+}
+
+.bloc:hover .bloc_image_search{
+    opacity:1;
+}
+
+.bloc:hover .bloc_image::after{
+    transform:translateY(0);
+}
+
+.bloc:hover .bloc_image{
+    transform:scale(1.1)
 }
 
 .progress_bar_container{
@@ -105,4 +174,8 @@
 
 .see_profile_button:hover{
     color:rgb(1, 224, 180);
+}
+
+.see_profile_button:focus{
+    outline-width: 0;
 }
