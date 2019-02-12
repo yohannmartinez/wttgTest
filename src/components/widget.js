@@ -55,12 +55,23 @@ class widget extends React.Component {
             this.setState({ rows: 2 },()=> {this.setProgressBar()})
         }
 
+        window.addEventListener("resize", this.onResize.bind(this))
+    }
 
+    onResize() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if(window.innerWidth < 800) {
+            this.setState({columns : 1})
+        } else if (window.innerWidth > 800 && urlParams.has("columns")) {
+            this.setState({ columns: urlParams.get("columns")})
+        } else {
+            this.setState({columns : 3})
+        }
     }
 
     setProgressBar() {
         let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))) * 100));
-        document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`
+        document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`;
     }
 
     navigate(navigation_number) {
