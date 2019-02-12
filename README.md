@@ -1,2 +1,1 @@
-# minStackReact
-get here a minimal stack to start react project with router, redux etc..
+to launch project, do "npm install" and run command "npm run watch"
