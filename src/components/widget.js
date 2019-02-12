@@ -8,8 +8,6 @@ class widget extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            columns: 3,
-            rows: 2,
             navigation_left: 0,
             blocs: [
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7206/151601/small_wttj-offres-emploi_170aa579-aa26-4cf8-838c-9d68d4da6c32.jpg" },
@@ -17,33 +15,46 @@ class widget extends React.Component {
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7217/151601/small_wttj-jobs_2d663949-83f4-486c-be79-b7d199de4216.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7229/151601/small_wttj-jobs_5dd0c775-397f-4462-911b-6e43b37effe7.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7240/151601/small_wttj-jobs_a1aa5500-1287-47f8-8fda-efc32a627451.jpg" },
-                { type: "quote", quote:"Boire du café empêche de dormir"},
-                { type: "quote", quote:"L'an dernier j’étais au bord du gouffre, cette année j'ai fait un grand pas en avant"},
-                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg",title:"Venez rencontrer Jean" },
-                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png",title: "Venez rencontrer Marie" },{ type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7206/151601/small_wttj-offres-emploi_170aa579-aa26-4cf8-838c-9d68d4da6c32.jpg" },
+                { type: "quote", quote: "Boire du café empêche de dormir" },
+                { type: "quote", quote: "L'an dernier j’étais au bord du gouffre, cette année j'ai fait un grand pas en avant" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg", title: "Venez rencontrer Jean" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png", title: "Venez rencontrer Marie" }, { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7206/151601/small_wttj-offres-emploi_170aa579-aa26-4cf8-838c-9d68d4da6c32.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7214/151601/small_wttj-annonces_d8d26d42-e764-4b3b-af34-2cdf25936ee1.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7217/151601/small_wttj-jobs_2d663949-83f4-486c-be79-b7d199de4216.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7229/151601/small_wttj-jobs_5dd0c775-397f-4462-911b-6e43b37effe7.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7240/151601/small_wttj-jobs_a1aa5500-1287-47f8-8fda-efc32a627451.jpg" },
-                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg",title:"Venez rencontrer Jean" },
-                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png",title: "Venez rencontrer Marie" },{ type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7206/151601/small_wttj-offres-emploi_170aa579-aa26-4cf8-838c-9d68d4da6c32.jpg" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg", title: "Venez rencontrer Jean" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png", title: "Venez rencontrer Marie" }, { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7206/151601/small_wttj-offres-emploi_170aa579-aa26-4cf8-838c-9d68d4da6c32.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7214/151601/small_wttj-annonces_d8d26d42-e764-4b3b-af34-2cdf25936ee1.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7217/151601/small_wttj-jobs_2d663949-83f4-486c-be79-b7d199de4216.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7229/151601/small_wttj-jobs_5dd0c775-397f-4462-911b-6e43b37effe7.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7240/151601/small_wttj-jobs_a1aa5500-1287-47f8-8fda-efc32a627451.jpg" },
-                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg",title:"Venez rencontrer Jean" },
-                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png",title: "Venez rencontrer Marie" },{ type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7206/151601/small_wttj-offres-emploi_170aa579-aa26-4cf8-838c-9d68d4da6c32.jpg" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg", title: "Venez rencontrer Jean" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png", title: "Venez rencontrer Marie" }, { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7206/151601/small_wttj-offres-emploi_170aa579-aa26-4cf8-838c-9d68d4da6c32.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7214/151601/small_wttj-annonces_d8d26d42-e764-4b3b-af34-2cdf25936ee1.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7217/151601/small_wttj-jobs_2d663949-83f4-486c-be79-b7d199de4216.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7229/151601/small_wttj-jobs_5dd0c775-397f-4462-911b-6e43b37effe7.jpg" },
                 { type: "image", link: "https://cdn.welcometothejungle.co/uploads/image/file/7240/151601/small_wttj-jobs_a1aa5500-1287-47f8-8fda-efc32a627451.jpg" },
-                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg",title:"Venez rencontrer Jean" },
-                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png",title: "Venez rencontrer Marie" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg", title: "Venez rencontrer Jean" },
+                { type: "video", link: "https://cdn.welcometothejungle.co/uploads/video/image/0956/151602/small_wttj_video_0604258a-e85e-4899-847d-1b091068aa57.png", title: "Venez rencontrer Marie" },
             ],
         }
     }
 
     async componentDidMount() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.has("columns")) {
+            this.setState({columns : urlParams.get("columns")})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        } else {
+            this.setState({columns : 3})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        }
+
+        if(urlParams.has("rows")) {
+            this.setState({rows : urlParams.get("rows")})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        } else {
+            this.setState({rows : 2})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        }
+
         let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))) * 100));
         document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`
     }
@@ -51,9 +62,9 @@ class widget extends React.Component {
     navigate(navigation_number) {
         this.setState({ navigation_left: this.state.navigation_left + navigation_number }, () => {
             document.getElementsByClassName('navigation_container')[0].style.transform = `translateX(${this.state.navigation_left}00vw)`
-            console.log(Math.abs(this.state.navigation_left))
+            console.log(Math.abs(this.state.navigation_left))                                                                                                                                                                                                                                                                                                                                                                               
             let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))) * 100));
-            document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`
+            document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         })
     }
 
