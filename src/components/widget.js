@@ -43,18 +43,22 @@ class widget extends React.Component {
 
     async componentDidMount() {
         const urlParams = new URLSearchParams(window.location.search);
-        if(urlParams.has("columns")) {
-            this.setState({columns : urlParams.get("columns")})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        if (urlParams.has("columns")) {
+            this.setState({ columns: urlParams.get("columns") },()=> {this.setProgressBar()})
         } else {
-            this.setState({columns : 3})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+            this.setState({ columns: 3 },()=> {this.setProgressBar()})
         }
 
-        if(urlParams.has("rows")) {
-            this.setState({rows : urlParams.get("rows")})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        if (urlParams.has("rows")) {
+            this.setState({ rows: urlParams.get("rows") },()=> {this.setProgressBar()})
         } else {
-            this.setState({rows : 2})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+            this.setState({ rows: 2 },()=> {this.setProgressBar()})
         }
 
+
+    }
+
+    setProgressBar() {
         let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))) * 100));
         document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`
     }
@@ -62,9 +66,9 @@ class widget extends React.Component {
     navigate(navigation_number) {
         this.setState({ navigation_left: this.state.navigation_left + navigation_number }, () => {
             document.getElementsByClassName('navigation_container')[0].style.transform = `translateX(${this.state.navigation_left}00vw)`
-            console.log(Math.abs(this.state.navigation_left))                                                                                                                                                                                                                                                                                                                                                                               
+            console.log(Math.abs(this.state.navigation_left))
             let progressBarWidth = Math.abs(-100 - ((Math.abs(this.state.navigation_left - 1) - (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows)))) / (Math.ceil(this.state.blocs.length / (this.state.columns * this.state.rows))) * 100));
-            document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+            document.getElementsByClassName('progress_bar')[0].style.width = `${progressBarWidth}%`
         })
     }
 
