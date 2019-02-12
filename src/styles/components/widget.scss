@@ -91,6 +91,22 @@
     transition:500ms;
 }
 
+.bloc_quote{
+    background-color:#2A2C31;
+    height:100%;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    transition:500ms;
+    text-align:center;
+    font-family:'Roboto',sans-serif;
+    font-weight:700;
+}
+
+.bloc_quote:hover{
+    background-color:rgb(58, 61, 66)
+}
+
 .bloc_image_search{
     color:white;
     background-color:rgb(1, 224, 180);
@@ -163,6 +179,15 @@
     margin-left:20rem;
 }
 
+.quote{
+    color:white;
+    font-size:20rem;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+}
 .progress_bar_container{
     height:5rem;
     width:100vw;
